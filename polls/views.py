@@ -7,7 +7,7 @@ from django.views.decorators.gzip import gzip_page
 from django.views.decorators.cache import never_cache
 
 from .models import Choice,Question
-
+from .forms import ContactForm
 
 
 def index(request):
@@ -72,3 +72,18 @@ def upload(request):
     else:
         return render(request, 'polls/upload.html')
 
+def send_mail(request):
+    if request.method == "GET":
+        form = ContactForm()
+        return render(request, 'polls/sendmail.html', {'form':form})
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            sender = form.cleaned_data['sender']
+            cc_myself = form.cleaned_data['cc_myself']
+            return HttpResponse('subject: %s message: %s sender %s cc_myself: %s'%(subject,message,sender, cc_myself))
+        else:
+            #return HttpResponse("Not valid")
+            return render(request, 'polls/sendmail.html', {'form',form})

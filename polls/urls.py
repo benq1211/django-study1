@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^export/$', views.export, name='export'),
     url(r'^upload/$', views.upload, name='upload'),
+    url(r'^sendmail/$', views.send_mail, name='sendmail'),
 ]

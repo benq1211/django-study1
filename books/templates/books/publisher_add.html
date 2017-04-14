@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="">
+    {%  csrf_token %}
+    <label>Name: </label>
+    <input type="text" name="name">
+    <br>
+    <label>Address: </label>
+    <input type="text" name="address">
+    <br>
+    <label>city: </label>
+    <input type="text" name="city">
+    <br>
+    <label>state_province: </label>
+    <input type="text" name="state_province">
+    <br>
+    <label>country: </label>
+    <input type="text" name="country">
+    <br>
+    <label>website: </label>
+    <input type="text" name="website">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

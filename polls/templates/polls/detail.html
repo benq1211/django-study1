@@ -3,7 +3,7 @@
 
 {% for d in sql_query %}
 <li> {{ d }} </li>
-<% endfor %}
+{% endfor %}
 
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
