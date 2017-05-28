@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+import time
 # Create your models here.
 
 class Question(models.Model):
@@ -29,16 +30,20 @@ class Publisher(models.Model):
     website = models.URLField()
     def __str__(self):
         return self.name
+TITLE_CHOICES = (
+    ('MR', 'Mr.'),
+    ('MRS', 'Mrs.'),
+    ('MS', 'Ms.'),
+)
 class Author(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=40)
-    email = models.EmailField()
-    def __str__(self):
-        return '%s %s' % (self.first_name, self.last_name)
+    name = models.CharField(max_length=100,default="benq")
+    title = models.CharField(max_length=3, choices=TITLE_CHOICES, default="a" )
+    birth_date = models.DateField(blank=True, null=True)
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name
 class Book(models.Model):
-    title = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,default="book")
     authors = models.ManyToManyField(Author)
-    publisher = models.ForeignKey(Publisher)
-    publication_date = models.DateField()
     def __str__(self):
-        return self.title
+        return self.name
+

@@ -1,13 +1,12 @@
 import csv
-from django.shortcuts import render,reverse,get_object_or_404
 
 from django.http import HttpResponse,HttpResponseRedirect,HttpResponseNotFound
-from django.views.decorators.http import require_http_methods,require_safe
-from django.views.decorators.gzip import gzip_page
+from django.shortcuts import render,reverse,get_object_or_404
 from django.views.decorators.cache import never_cache
+from django.views.decorators.gzip import gzip_page
 
+from .forms import ContactForm,AuthorForm,PublisherForm
 from .models import Choice,Question
-from .forms import ContactForm
 
 
 def index(request):
@@ -87,3 +86,18 @@ def send_mail(request):
         else:
             #return HttpResponse("Not valid")
             return render(request, 'polls/sendmail.html', {'form',form})
+def author_add(request):
+	if request.method == 'GET':
+		form = AuthorForm()
+		return render(request,'polls/author_add.html',{'form':form})
+
+
+def publisher_add(request):
+    if request.method == 'POST':
+        form = PublisherForm(request.POST)
+        if form.is_valid():
+            publisher = form.save()
+            return HttpResponse("Add ok")
+    else:
+        form = PublisherForm(initial={'name': "O'Reilly"})
+    return render(request, 'polls/publisher_add.html', {'form': form})

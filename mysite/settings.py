@@ -25,7 +25,7 @@ SECRET_KEY = '(tpu@u(i(1y-&@%4=839s(*_b@9x7z68p_7zuhuox-q5py6@8v'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = True
-ALLOWED_HOSTS = ["192.168.1.217","192.168.1.116"]
+ALLOWED_HOSTS = ["192.168.1.217","192.168.1.116","192.168.1.40"]
 
 
 # Application definition

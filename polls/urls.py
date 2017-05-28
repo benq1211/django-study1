@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^export/$', views.export, name='export'),
     url(r'^upload/$', views.upload, name='upload'),
     url(r'^sendmail/$', views.send_mail, name='sendmail'),
+    url(r'^author_add/$',views.author_add,name='author_add'),
+    url(r'^publisher_add/$',views.publisher_add,name='publisher_add'),
+
 ]
