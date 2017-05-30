@@ -6,7 +6,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.gzip import gzip_page
 
 from .forms import ContactForm,AuthorForm,PublisherForm
-from .models import Choice,Question
+from .models import Choice,Question, Publisher
 
 
 def index(request):
@@ -101,3 +101,16 @@ def publisher_add(request):
     else:
         form = PublisherForm(initial={'name': "O'Reilly"})
     return render(request, 'polls/publisher_add.html', {'form': form})
+
+def publisher_update(request, publisher_id):
+    publisher= get_object_or_404(Publisher, id=publisher_id )
+    if request.method== 'GET':
+        form = PublisherForm(instance=publisher)
+        return render(request,'polls/publisher_update.html',{'form':form})
+    elif request.method == 'POST':
+        form = PublisherForm(request.POST, instance=publisher)  #because of update,so have instance
+        if form.is_valid():
+            form.save()
+            return HttpResponse('update success')
+
+    return HttpResponse('valid')

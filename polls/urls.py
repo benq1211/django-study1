@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^sendmail/$', views.send_mail, name='sendmail'),
     url(r'^author_add/$',views.author_add,name='author_add'),
     url(r'^publisher_add/$',views.publisher_add,name='publisher_add'),
-
+    url(r'^publisher/(?P<publisher_id>[0-9])+/update/$', views.publisher_update, name='publisher_update'),
 ]

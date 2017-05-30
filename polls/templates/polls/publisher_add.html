@@ -1,13 +1,21 @@
+{% load bootstrap %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <title>Title</title>
 </head>
 <body>
+
 <form action="" method="post">
     {% csrf_token %}
- 	{{form.as_p}}
+<br />
+   <!-- {{   form|bootstrap }} -->
+
+    {{  form|bootstrap_horizontal }}
+
+    <!-- single ziduan-->
     <div>
     <input type="submit" value="submit" />
 </div>

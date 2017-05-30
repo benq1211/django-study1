@@ -28,6 +28,8 @@ urlpatterns = [
     url("^$", index),
     url("^hello/$", hello),
     url("^polls/",include('polls.urls')),
+    url("^days/",include('days.urls')),
    # url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
 
 ]
